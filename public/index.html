@@ -1,0 +1,181 @@
+<html>
+<head>
+	<title>Simple Simon</title>
+	<style>
+	.button {
+ 		width: 250px;
+ 		height: 250px;
+ 		/*border: 1px solid black;*/
+  		color: white;
+ 		/*font-weight: bold;*/
+ 		/*margin-right: 15px;
+ 		margin-top: 10px;
+ 		margin-bottom: 10px;*/
+ 		/*padding: 10px;*/
+ 		opacity: .2;
+ 		/*border-radius: 310px;*/
+ 		z-index:0;
+
+ 	}
+ 	.bigdiv{
+ 		background-color: #e0dae7;
+ 		width: 600;
+ 		padding: 300;
+ 		border-style: groove;
+ 	}
+ 	#topleft{
+ 		background-color: #3392fc;
+ 		
+ 	}
+ 	#topright{
+ 		background-color: #63f01c;
+ 	}
+ 	#bottomleft{
+ 		background-color: #ee14e5;
+ 	}
+ 	#bottomright{
+ 		background-color: #fcf733;
+ 	}
+ 	</style>
+</head>
+<body>
+
+<div class = "bigdiv">
+	<h1>WELCOME TO THE JUNGLE</h1>
+	<div>
+		<button class = "button" id="topleft"></button>
+		<button class = "button" id="topright"></button>
+	</div>
+	<div>
+		<button class = "button" id="bottomleft"></button>
+		<button class = "button" id="bottomright"></button>
+	</div>
+</div>
+<script>
+// alert('Welcome to the Game')
+var simonSequence =[]
+var userSequence=[]
+// var playSelection =[];
+var button =document.getElementsByClassName('button');
+// function start(){
+// 	simonSequence =[];
+// 	next();
+// }
+// function next(){
+// 	userSequence=[];
+// 	addRandomSquareToSequence();
+// 	playback();
+// }
+// function addRandomSquareToSequence(){
+// 	var random =Math.floor(Math.random() * 4);
+// 	simonSequence
+// }
+function getRandomButton () {
+	var random =Math.floor(Math.random() * 4);
+	return button[random]
+}
+var randomButton = getRandomButton();
+simonSequence.push(randomButton);
+
+function animateButton(){
+	randomButton.style.opacity ="1";
+	var timeoutId = setTimeout(function(){
+	randomButton.style.opacity ="0.2"
+		}, 800);
+}
+	
+
+
+
+function playSelection(simonSequence){
+	disableInput();
+	document.getElementById('round').innerText = 'Round:' + simonSequence.length;
+	userSequence= []
+	var i =0;
+	var intervalId = setInterval(function(){
+		animateButton(document.getElementById(simonSequence))[i];
+	i++;
+	if (i >= simonSequence.length){
+				clearInterval(interval);
+				//activateSimonBoard();
+				enableInput();
+			}
+	}, 600);
+
+	}
+	// console.log(simonSequence[i])
+
+
+function userChoice(event){
+	// console.log(this)
+	var timeoutId = setTimeout(function(){
+		var selection = userChoice();
+		// userSequence()
+		userSequence.push(userChoice);
+		// console.log(userChoice);
+		// simonSequence();
+		}, 1000);
+}
+
+	
+
+function clickEvent(event){
+	event.target.style.opacity ='1'
+	var timeoutId = setTimeout(function(){
+	event.target.style.opacity ="0.2"
+		}, 800);
+	userSequence.push(event.target.id);
+
+	console.log(event.target.id);
+
+	for (var i= 0; i<simonSequence.length; i++ ){
+
+	if  (userSequence[i] != simonSequence[i]){
+		//sequenceError = true;
+		alert('better luck next time');
+
+	}else{ (userSequence.length == simonSequence.length);
+
+		// alert('congrats you survived!');
+		}
+	}	
+}
+	// simonSequence()
+
+
+// function simonSequence(){
+// 	for (var i= 0; i<simonSequence.length; i++ ){
+// 	if  (userSequence[i] != simonSequence[i]){
+// 		//sequenceError = true;
+// 		alert('better luck next time');
+// 	}else{ (userSequence.length == simonSequence.length);
+// 		alert('congrats you survived!');
+// 		}
+// 	}	
+// }
+
+	animateButton()
+	userChoice()
+
+
+
+var topleft = document.getElementById('topleft');
+var topright = document.getElementById('topright');
+var bottomleft = document.getElementById('bottomleft');
+var bottomright = document.getElementById('bottomright');
+
+topleft.addEventListener('click',clickEvent,false);
+topright.addEventListener('click',clickEvent,false);
+bottomright.addEventListener('click',clickEvent,false);
+bottomleft.addEventListener('click',clickEvent,false);
+
+// function enableInput(){
+// 	document.getElementById
+// }
+// function disableInput(){
+// 	document.getElementById
+// }
+
+</script>
+</body>
+</html>
